@@ -1,0 +1,30 @@
+plugins {
+    id 'com.android.library'
+}
+
+
+android {
+    compileSdk 35
+    namespace 'com.xgr.wechatpay'
+
+    defaultConfig {
+        minSdk 21
+        
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compileOnly project(':easypay')
+    api libs.wechat
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}
